@@ -15,6 +15,22 @@ export const get = async <T>(path: string): Promise<T> => {
     (await response.json()) as unknown as ApiResponse<T>
   return res.data
 }
+export const post = async <T>(path: string, payload: object): Promise<T> => {
+  const reqUrl = new URL(path, baseUrl)
+  const response = await fetch(reqUrl.href, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  })
+  if (!response.ok) {
+    throw new Error('Network response was not ok')
+  }
+  const res: ApiResponse<T> =
+    (await response.json()) as unknown as ApiResponse<T>
+  return res.data
+}
 
 interface ApiResponse<T> {
   status: Status

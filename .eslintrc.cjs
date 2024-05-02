@@ -18,7 +18,8 @@ module.exports = {
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true }
-    ]
+    ],
+    'react/prop-types': [2, { ignore: ['className'] }]
   },
   parserOptions: {
     ecmaVersion: 'latest',
