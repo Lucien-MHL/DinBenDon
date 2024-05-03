@@ -1,4 +1,4 @@
-const baseUrl = 'http://34.80.254.154:8080'
+const baseUrl = 'https://dinbendon.zeabur.app/'
 
 interface ApiResponse<T> {
   status: Status
