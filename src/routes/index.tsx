@@ -3,7 +3,7 @@ import { PATHS } from './paths'
 import ProtectedLayout from '@layouts/ProtectedLayout'
 import * as Page from '@pages'
 
-const router = createBrowserRouter([
+const routes = [
   {
     path: PATHS.LOGIN,
     element: <Page.Login />
@@ -27,6 +27,10 @@ const router = createBrowserRouter([
     path: PATHS.NOT_FOUND,
     element: <Page.NotFound />
   }
-])
+]
+
+const router = createBrowserRouter(routes, {
+  basename: import.meta.env.BASE_URL
+})
 
 export const Routes = () => <RouterProvider router={router} />
