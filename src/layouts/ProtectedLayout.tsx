@@ -1,11 +1,22 @@
+import React from 'react'
 import { Outlet } from 'react-router-dom'
-import { Fragment } from 'react/jsx-runtime'
+import { useNavigate } from 'react-router-dom'
+
+import { PATHS } from '@routes/paths'
 
 function ProtectedLayout() {
+  const navigate = useNavigate()
+
+  // TODO: To use real key to get user is login or not
+  React.useEffect(() => {
+    const isLogin = localStorage.getItem('isLogin')
+    if (!isLogin) navigate(PATHS.LOGIN)
+  }, [navigate])
+
   return (
-    <Fragment>
+    <React.Fragment>
       <Outlet />
-    </Fragment>
+    </React.Fragment>
   )
 }
 
